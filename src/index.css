@@ -1,13 +1,557 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* container css */
+.container {
+    width: min(90%, 1200px);
+    margin: 0 auto;
+}
+
+/* heading font */
+h1,
+h2,
+h3,
+h4,
+.heading {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+/* top Nav */
+.navbar {
+    font-size: 18px;
+    background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+    padding-left: 0;
+}
+
+.nav-links,
+.logo {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.main-nav li {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.logo {
+    display: inline-block;
+}
+.logo img {
+    max-width: 250px;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+}
+
+.active {
+    display: block;
+}
+
+@media screen and (min-width: 900px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        min-height: 70px;
+        align-items: center;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .main-nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .nav-links {
+        margin-left: 40px;
+    }
+
+    .logo {
+        margin-top: 0;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+
+    .logo:hover,
+    .nav-links:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+}
+/* main body Home page */
+main h1 {
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.infoSummary {
+    padding-bottom: 60px;
+}
+
+.gridRow {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.infoSummary .gridRow {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #ededed;
+    border-radius: 10px;
+}
+.card a {
+    text-decoration: none;
+    color: #3e007c;
+}
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+.dash-widget .card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.card-icon {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    background: #26a69a;
+}
+.card-icon .fas {
+    font-size: 24px;
+    margin: auto;
+    color: #fff;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.bg-primary {
+    background-color: #3e007c !important;
+}
+.card-right {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-right .card-title {
+    font-size: 24px;
+}
+.card-right p {
+    font-size: 20px;
+}
+
+.pendingLeave {
+    padding: 60px 0;
+}
+.leaveCard > .card-body {
+    flex-direction: column;
+    gap: 10px;
+}
+.currentLeaveCard > .card-body {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pendingLeave h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.card-body h4 {
+    font-size: 24px;
+}
+.currentDayLeave {
+    padding: 60px 0;
+}
+.currentDayLeave h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.cta {
+    padding: 80px 30px;
+    background: #2376ae;
+    background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.cta h2 {
+    font-size: 36px;
+}
+.cta {
+    padding: 80px 30px;
+    background: #2376ae;
+    background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.cta h2,
+.cta h1 {
+    font-size: 36px;
+    margin: 0;
+}
+@media all and (max-width: 700px) {
+    .cta {
+        padding: 40px 15px;
+    }
+    .cta h2,
+    .cta h1 {
+        font-size: 28px;
+    }
+}
+
+.btn.btn-primary {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(255 255 255 / 0.8);
+    padding: 0.75em 2em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btn.btn-primary:hover {
+    color: #fff;
+    border-image: linear-gradient(to right, #6ed4db, #f8c413) 1;
+}
+.btn.btn-primary {
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #f8c413, #6ed4db) 1;
+}
+@media all and (max-width: 768px) {
+    main h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .pendingLeave h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .card-body h4 {
+        font-size: 20px;
+    }
+    .currentDayLeave h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+}
+
+/* form */
+.book__form {
+    padding: 60px 0;
+}
+.book__form .form-item:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.book__form .field_sm,
+.book__form textarea,
+.book__form select {
+    width: 100%;
+    border: none;
+    display: block;
+    color: inherit;
+    font-size: 15px;
+    padding: 15px 20px;
+    border-radius: 2px;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    border-bottom: 3px solid #6ed4db;
+    background-color: rgb(110 212 219 / 5%);
+}
+
+@media only screen and (max-width: 56.25em) {
+    .book__form .field_sm,
+    .book__form textarea,
+    .book__form select {
+        width: 100%;
+    }
+}
+
+.book__form .field_sm:focus {
+    outline: none;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #6ed4db;
+}
+.book__form textarea:focus,
+.book__form select:focus {
+    outline: none;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #6ed4db;
+}
+.field_sm:focus:invalid {
+    border-bottom: 3px solid #ff7730;
+}
+.book__form textarea:focus:invalid {
+    border-bottom: 3px solid #ff7730;
+}
+.book__form .form label {
+    font-size: 16px;
+    font-weight: 600;
+}
+.book__form .btn.btn-primary {
+    background-color: #fff;
+    color: #444;
+}
+
+@media all and (min-width: 700px) {
+    .empForm {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        column-gap: 40px;
+        row-gap: 20px;
+    }
+    .empForm .form-item:last-child {
+        grid-column-start: 1;
+    }
+}
+
+/* employee management css */
+.employeeList {
+    padding: 60px 0;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.mb-0 {
+    margin-bottom: 0;
+}
+.widget-profile .profile-info-widget {
+    display: block;
+    text-align: center;
+}
+.widget-profile .profile-info-widget .booking-doc-img {
+    display: inline-block;
+    margin: 0 0 10px;
+    width: auto;
+    padding: 5px;
+    background-color: #f7f7f7;
+    border-radius: 50%;
+}
+.widget-profile .profile-info-widget .booking-doc-img img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+.profile-info-widget {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: left;
+}
+.profile-info-widget .booking-doc-img {
+    margin-right: 15px;
+}
+.profile-info-widget .booking-doc-img img {
+    border-radius: 4px;
+    height: 90px;
+    width: 90px;
+    object-fit: cover;
+}
+.profile-det-info {
+    overflow: hidden;
+}
+.profile-det-info h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.profile-det-info h4 a {
+    color: #3e007c;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* leave review */
+.leaveInfo {
+    padding: 30px 0;
+}
+
+.leaveInfo-item {
+    display: flex;
+    align-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.leaveInfo-item h3 {
+    font-size: 28px;
+}
+
+.leaveInfo-item p {
+    font-size: 20px;
+}
+/* <select> styles */
+.leaveInfo-item select {
+  /* Reset */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: 20em;
+  height: 3em;
+  padding: 0 4em 0 1em;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) no-repeat right 0.8em center/1.4em, linear-gradient(to left, rgb(87 184 222) 3em, rgb(98 197 221) 3em);
+  color: white;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  /* <option> colors */
+  /* Remove focus outline */
+  /* Remove IE arrow */
+}
+.leaveInfo-item select option {
+  color: inherit;
+  background-color: #57b8de;
+}
+.leaveInfo-item select:focus {
+  outline: none;
+}
+.leaveInfo-item select::-ms-expand {
+  display: none;
+}
+@media all and (max-width: 800px) {
+    .leaveInfo-item {
+        flex-wrap: wrap;
+    }
 }
