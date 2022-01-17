@@ -4,7 +4,7 @@ const TextInput = ({ label, rules, errors, register, ...rest }, props) => {
     return (
         <>
             <div className="form-item">
-                <label htmlFor={rest.name}> {label} </label>
+                <label htmlFor={rest.id}> {label} </label>
                 <input
                     {...rest}
                     className="field_sm"

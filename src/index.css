@@ -550,6 +550,13 @@ main h1 {
 .leaveInfo-item select::-ms-expand {
   display: none;
 }
+
+span.error {
+    margin-top: 5px;
+    display: inline-block;
+    color: red;
+    font-size: 14px;
+}
 @media all and (max-width: 800px) {
     .leaveInfo-item {
         flex-wrap: wrap;

@@ -1,6 +1,7 @@
 import React from 'react';
 import TextInput from './forms/TextInput';
 import { useForm } from 'react-hook-form';
+import SelectInput from './forms/SelectInput';
 
 const AddUser = () => {
     const {
@@ -25,42 +26,56 @@ const AddUser = () => {
                     <TextInput
                         label="Full Name"
                         name="name"
+                        id="name"
                         type="text"
                         register={register}
                         rules={{
-                            required: 'field is required',
+                            required: '*field is required',
                         }}
                         errors={errors}
                     />
+                    <TextInput
+                        label="Phone Number"
+                        name="phone"
+                        id="phone"
+                        type="text"
+                        register={register}
+                        rules={{
+                            required: '*field is required',
+                        }}
+                        errors={errors}
+                    />
+                    <TextInput
+                        label="Email Address"
+                        name="email"
+                        id="email"
+                        type="email"
+                        register={register}
+                        rules={{
+                            required: '*field is required',
+                        }}
+                        errors={errors}
+                    />
+                    <TextInput
+                        label="Designation"
+                        name="designation"
+                        id="designation"
+                        type="text"
+                        register={register}
+                        rules={{
+                            required: '*field is required',
+                        }}
+                        errors={errors}
+                    />
+                    <SelectInput
+                        label="Team"
+                        name="team"
+                        id="team"
+                        options={['Web', 'iOS', 'Android', 'Backend', 'Frontend', 'QA', 'DevOps', 'HR', 'Admin']}
+                        register={register}
+                    />
 
-                    <div className="form-item">
-                        <label htmlFor="phone">Phone Number</label>
-                        <input
-                            type="text"
-                            name="phone"
-                            id="phone"
-                            className="field_sm"
-                        />
-                    </div>
-                    <div className="form-item">
-                        <label htmlFor="email">Email Address</label>
-                        <input
-                            type="text"
-                            name="email"
-                            id="email"
-                            className="field_sm"
-                        />
-                    </div>
-                    <div className="form-item">
-                        <label htmlFor="designation">Designation</label>
-                        <input
-                            type="text"
-                            name="designation"
-                            id="designation"
-                            className="field_sm"
-                        />
-                    </div>
-                    <div className="form-item">
+                    {/* <div className="form-item">
                         <label htmlFor="team">Team</label>
                         <select name="team" id="team">
                             <option value="Web">Web</option>
@@ -68,7 +83,7 @@ const AddUser = () => {
                             <option value="android">Android</option>
                             <option value="hr">HR</option>
                         </select>
-                    </div>
+                    </div> */}
                     <div className="form-item">
                         <label htmlFor="supervisor">Supervisor</label>
                         <input
