@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../resources/braincraft-logo.png';
-import classes from './Nav.module.css';
 
 const Nav = () => {
     return (
@@ -12,7 +11,7 @@ const Nav = () => {
                 <a href="/" className="logo">
                     <img src={logo} alt="Brain Craft LTD. logo" />
                 </a>
-                <ul class="main-nav" id="js-menu">
+                <ul className="main-nav" id="js-menu">
                     <li>
                         <a href="/" className="nav-links">
                             Home

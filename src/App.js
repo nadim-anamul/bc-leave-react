@@ -1,7 +1,7 @@
 import Nav from './components/Nav';
-import AdminSummary from './components/AdminSummary';
-import PendingLeave from './components/PendingLeave';
-import TodaysLeave from './components/TodaysLeave';
+import Home from './components/Home';
+import { Routes, Route } from 'react-router-dom';
+import AddUser from './components/AddUser';
 
 function App() {
     const applicationData = [
@@ -63,12 +63,11 @@ function App() {
     return (
         <>
             <Nav></Nav>
-
-            <div className="container">
-                <AdminSummary applicationData={applicationData}></AdminSummary>
-                <PendingLeave applicationData={applicationData}></PendingLeave>
-                <TodaysLeave applicationData={applicationData}></TodaysLeave>
-            </div>
+ 
+            <Routes>
+                <Route path="/" element={<Home applicationData = {applicationData}/>} />
+                <Route path="/addUser" element={<AddUser />} />
+            </Routes>
         </>
     );
 }
