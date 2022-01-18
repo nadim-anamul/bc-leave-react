@@ -16,6 +16,7 @@ const PendingLeave = (props) => {
                             <Card
                                 key={application.id}
                                 application={application}
+                                leaveLink={`/leave-review/${application.id}`}
                             />
                         ))}
                     </div>

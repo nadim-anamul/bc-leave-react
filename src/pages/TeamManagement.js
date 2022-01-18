@@ -35,14 +35,14 @@ const TeamManagement = () => {
                             <CardSummary
                                 key={team.id}
                                 data={team}
-                                editLink={`/teamEdit/${team.id}`}
+                                editLink={`/team-edit/${team.id}`}
                             ></CardSummary>
                         ))}
                     </div>
                 </div>
                 <Cta
                     title={`Total ${totalTeam} Active Team`}
-                    action="/addTeam"
+                    action="/team-edit"
                     actionName="Add Team"
                 ></Cta>
             </div>

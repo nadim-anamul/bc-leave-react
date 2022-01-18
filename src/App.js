@@ -1,9 +1,14 @@
+import { Routes, Route } from 'react-router-dom';
+
 import Nav from './components/Nav';
 import Home from './components/Home';
-import { Routes, Route } from 'react-router-dom';
 import AddUser from './components/AddUser';
 import EmployeeManagement from './pages/EmployeeManagement';
 import TeamManagement from './pages/TeamManagement';
+import TeamEdit from './pages/TeamEdit';
+import LeaveManagement from './pages/LeaveManagement';
+import LeaveReview from './pages/LeaveReview';
+import Profile from './pages/Profile';
 
 function App() {
     const applicationData = [
@@ -41,7 +46,7 @@ function App() {
             leaveType: 'Casual',
             leaveDate: '2020-04-03',
             leaveDays: '2',
-            leaveStatus: 'Accepted',
+            leaveStatus: 'Pending',
         },
         {
             id: 5,
@@ -65,12 +70,29 @@ function App() {
     return (
         <>
             <Nav></Nav>
- 
+
             <Routes>
-                <Route path="/" element={<Home applicationData = {applicationData}/>} />
+                <Route
+                    path="/"
+                    element={<Home applicationData={applicationData} />}
+                />
                 <Route path="/addUser" element={<AddUser />} />
-                <Route path="/employee-management" element={<EmployeeManagement />} />
+                <Route
+                    path="/employee-management"
+                    element={<EmployeeManagement />}
+                />
                 <Route path="/team-management" element={<TeamManagement />} />
+                <Route path="/team-edit" element={<TeamEdit />} />
+                <Route
+                    path="/leave-management"
+                    element={
+                        <LeaveManagement applicationData={applicationData} />
+                    }
+                />
+                <Route path="/leave-review" element={<LeaveReview />}>
+                    <Route path=":slug" element={<LeaveReview />} />
+                </Route>
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </>
     );
