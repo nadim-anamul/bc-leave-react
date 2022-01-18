@@ -2,6 +2,8 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import { Routes, Route } from 'react-router-dom';
 import AddUser from './components/AddUser';
+import EmployeeManagement from './pages/EmployeeManagement';
+import TeamManagement from './pages/TeamManagement';
 
 function App() {
     const applicationData = [
@@ -67,6 +69,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home applicationData = {applicationData}/>} />
                 <Route path="/addUser" element={<AddUser />} />
+                <Route path="/employee-management" element={<EmployeeManagement />} />
+                <Route path="/team-management" element={<TeamManagement />} />
             </Routes>
         </>
     );

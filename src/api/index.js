@@ -1,10 +1,10 @@
 
 import axios from 'axios';
-const apiUrl = 'http://localhost:3000/api/';
+const apiUrl = 'http://localhost:5000';
 
 export const apiClient = axios.create({
     baseURL: apiUrl,
-    timeout: 10000,
+    timeout: 100000,
     headers: { 
         'Content-Type': 'application/json',
         'Allow-Control-Allow-Origin': '*'
