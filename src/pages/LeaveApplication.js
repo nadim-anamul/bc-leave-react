@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import TextInput from '../components/forms/TextInput';
 import SelectInput from '../components/forms/SelectInput';
+import TextInput from '../components/forms/TextInput';
+import TextAreaInput from '../components/forms/TextAreaInput';
 import { apiClient } from '../api';
 
-const TeamEdit = () => {
+const LeaveApplication = () => {
     const {
         register,
         handleSubmit,
@@ -13,7 +14,7 @@ const TeamEdit = () => {
 
     const onSubmit = async (data) => {
         await apiClient
-            .post('/team/add', data)
+            .post('/emp/leave', data)
             .then((res) => {
                 console.log('res', res);
             })
@@ -21,64 +22,54 @@ const TeamEdit = () => {
                 console.log('err', err);
             });
     };
-    const teamLeadData = [
-        {
-            id: '1234568',
-            name: 'Bilash',
-        },
-        {
-            id: '12368',
-            name: 'Shahin',
-        },
-        {
-            id: '134568',
-            name: 'Erfan',
-        },
-        {
-            id: '12345',
-            name: 'Kajim',
-        },
-        {
-            id: '12348',
-            name: 'Borhan',
-        },
-    ];
     return (
         <main>
             <div className="container">
-                <h1>Details of Team</h1>
+                <h1>Apply For Leave</h1>
                 <div className="book__form">
                     <form
                         method="post"
-                        className="form teamForm"
+                        className="form leaveForm"
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <TextInput
-                            label="Team Name"
-                            name="teamName"
-                            id="teamName"
-                            type="text"
+                            label="Date Form"
+                            name="startDate"
+                            id="startDate"
+                            type="Date"
                             register={register}
                             rules={{
                                 required: '*field is required',
                             }}
                             errors={errors}
                         />
-                        <SelectInput
-                            label="Team Status"
-                            name="teamStatus"
-                            id="teamStatus"
-                            options={[
-                                { name: 'Active', id: 1 },
-                                { name: 'Inactive', id: 0 },
-                            ]}
+                        <TextInput
+                            label="Date To"
+                            name="endDate"
+                            id="endDate"
+                            type="Date"
+                            register={register}
+                            rules={{
+                                required: '*field is required',
+                            }}
+                            errors={errors}
+                        />
+                        <TextAreaInput
+                            label="Reason"
+                            name="reason"
+                            id="reason"
                             register={register}
                         />
+
                         <SelectInput
-                            label="Team Lead"
-                            name="teamLead"
-                            id="teamLead"
-                            options={teamLeadData}
+                            label="Leave Type"
+                            name="leaveType"
+                            id="leaveType"
+                            options={[
+                                { name: 'Casual', id: 0 },
+                                { name: 'Sick', id: 1 },
+                                { name: 'Family', id: 2 },
+                            ]}
                             register={register}
                         />
 
@@ -87,7 +78,7 @@ const TeamEdit = () => {
                                 className="btn btn-primary"
                                 type="submit"
                                 name="submit"
-                                value="Save"
+                                value="Apply"
                             />
                         </div>
                     </form>
@@ -97,4 +88,4 @@ const TeamEdit = () => {
     );
 };
 
-export default TeamEdit;
+export default LeaveApplication;

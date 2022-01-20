@@ -1,0 +1,27 @@
+.gBody {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gButton {
+    border: 1px solid rgb(66, 133, 244);
+    background: rgb(66, 133, 244);
+    display: flex;
+}
+
+.gLogo {
+    width: 21px;
+    height: 21px;
+    padding: 8px 10px;
+    background: white;
+}
+
+.gText {
+    font-size: 16px;
+    padding: 8px 10px;
+    color: white;
+    font-family: roboto;
+    text-align: center;
+}

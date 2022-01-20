@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext';
 import AdminSummary from './AdminSummary';
 import PendingLeave from './PendingLeave';
 import TodaysLeave from './TodaysLeave';
@@ -18,6 +19,9 @@ const Home = (props) => {
     //         console.log(err);
     //     });
     // };
+
+    const { getUser, values } = useAuth;
+    console.log('getUser', getUser, values);
 
     return (
         <div className="container">

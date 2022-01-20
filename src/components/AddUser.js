@@ -14,18 +14,11 @@ const AddUser = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        //const formData = new FormData();
-        // console.log({
-        //     ...data,
-        //     // nationalIdFilePath: data?.nationalIdFilePath[0].name,
-        //     // profilePhotoPath: data?.profilePhotoPath[0].name,
-        // });
-
         await apiClient
             .post('/emp/add', {
                 ...data,
-                nationalIdFilePath: data?.nationalIdFilePath[0].name,
-                profilePhotoPath: data?.profilePhotoPath[0].name,
+                nid: data?.nid[0].name,
+                image: data?.image[0].name,
             })
             .then((res) => {
                 console.log('res', res);
@@ -34,6 +27,18 @@ const AddUser = () => {
                 console.log('err', err);
             });
     };
+    const teamData = [
+        {
+            id:'61da675e4628fc6a0eadd3e2',
+            name: 'Web'
+        }
+    ]
+    const designation = [
+        {
+            id:'61da675e4628fc6a0eadd3e2',
+            name: 'HR'
+        }
+    ]
 
     return (
         <main>
@@ -91,19 +96,16 @@ const AddUser = () => {
                     /> */}
                         <SelectInput
                             label="Team"
-                            name="teamName"
-                            id="teamName"
-                            options={[
-                                'Web',
-                                'iOS',
-                                'Android',
-                                'Backend',
-                                'Frontend',
-                                'QA',
-                                'DevOps',
-                                'HR',
-                                'Admin',
-                            ]}
+                            name="teamId"
+                            id="teamId"
+                            options={teamData}
+                            register={register}
+                        />
+                        <SelectInput
+                            label="Team"
+                            name="designation"
+                            id="designation"
+                            options={designation}
                             register={register}
                         />
                         <TextInput
@@ -126,8 +128,8 @@ const AddUser = () => {
                         />
                         <TextInput
                             label="NID File"
-                            name="nationalIdFilePath"
-                            id="nationalIdFilePath"
+                            name="nid"
+                            id="nid"
                             type="file"
                             register={register}
                         />
@@ -166,8 +168,8 @@ const AddUser = () => {
                         />
                         <TextInput
                             label="Profile Pic"
-                            name="profilePhotoPath"
-                            id="profilePhotoPath"
+                            name="image"
+                            id="image"
                             type="file"
                             register={register}
                         />
@@ -196,7 +198,7 @@ const AddUser = () => {
                             label="Employee Status"
                             name="isActive"
                             id="isActive"
-                            options={['Active', 'Inactive']}
+                            options={[{name:'Active',id:1}, {name:'Inactive',id:0}]}
                             register={register}
                         />
                         <div className="form-item">

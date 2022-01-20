@@ -9,6 +9,11 @@ import TeamEdit from './pages/TeamEdit';
 import LeaveManagement from './pages/LeaveManagement';
 import LeaveReview from './pages/LeaveReview';
 import Profile from './pages/Profile';
+import LeaveApplication from './pages/LeaveApplication';
+import Login from './pages/Login';
+import Success from './RedirectPage/success';
+import Failure from './RedirectPage/failure';
+import AuthProvider from './context/AuthContext';
 
 function App() {
     const applicationData = [
@@ -68,14 +73,20 @@ function App() {
         },
     ];
     return (
-        <>
+        <AuthProvider>
             <Nav></Nav>
 
             <Routes>
+            <Route path="/" element={<Login />} />
                 <Route
-                    path="/"
+                    path="/home"
                     element={<Home applicationData={applicationData} />}
                 />
+
+
+                   <Route path="/success/:token" element={<Success />} />
+                    <Route path="/failure" element={<Failure />} />
+
                 <Route path="/addUser" element={<AddUser />} />
                 <Route
                     path="/employee-management"
@@ -93,8 +104,10 @@ function App() {
                     <Route path=":slug" element={<LeaveReview />} />
                 </Route>
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/leave-application" element={<LeaveApplication />} />
+                
             </Routes>
-        </>
+            </AuthProvider>
     );
 }
 

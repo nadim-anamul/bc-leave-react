@@ -7,10 +7,7 @@ const LeaveReview = () => {
         leaveType: 'Casual',
         startDate: '2020-01-01',
         endDate: '2020-01-01',
-        reason: `I wish to apply for 1 working day leave on
-        23-08-2021 for a personal reason. I would like to
-        have your approval on my leave of 1 day. Looking
-        forward to a positive reply at the earliest!`,
+        reason: 'I wish to apply for 1 working day leave on 23-08-2021 for a personal reason. I would like to have your approval on my leave of 1 day. Looking forward to a positive reply at the earliest!',
     };
     return (
         <main>
@@ -39,7 +36,7 @@ const LeaveReview = () => {
                     </div>
                     <div className="leaveInfo-item">
                         <h3>Reason:</h3>
-                        <p>{leaveData.reasons}</p>
+                        <p>{leaveData.reason}</p>
                     </div>
                     <div className="leaveInfo-item">
                         <h3>Status:</h3>
