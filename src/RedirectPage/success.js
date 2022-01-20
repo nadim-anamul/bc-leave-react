@@ -1,25 +1,22 @@
 import React from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { apiClient } from "../api";
 
 const Success = () => {
   const { token }: any = useParams();
-  console.log(token);
-
+  const navigate = useNavigate();
   localStorage.setItem("__token__", token);
 
-  fetch("http://localhost:5000/emp", {
-    method: "POST",
+  apiClient.post('/emp', {}, {
     headers: {
       "authorization" : `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  })
-  .then(res => res.json())
-  .then(data => {
-    localStorage.setItem('__user__', JSON.stringify(data.data));;
-  });
+    }
+  }).then((res) => {
+    localStorage.setItem('__user__', JSON.stringify(res.data.data));
+    navigate('/dashboard');
+  }).catch(err => err);
 
-  return <Navigate to="/home"></Navigate>;
+  return <></>;
 };
 
 export default Success;

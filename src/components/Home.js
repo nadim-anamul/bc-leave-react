@@ -1,9 +1,8 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
 import AdminSummary from './AdminSummary';
 import PendingLeave from './PendingLeave';
 import TodaysLeave from './TodaysLeave';
-//import { apiClient } from '../api';
+import { useAuth } from '../context/AuthContext';
 
 const Home = (props) => {
     // const handleSubmit = async(e) => {
@@ -20,8 +19,9 @@ const Home = (props) => {
     //     });
     // };
 
-    const { getUser, values } = useAuth;
-    console.log('getUser', getUser, values);
+    const {isLoggedIn, currentUser} = useAuth();
+
+    console.log('values', isLoggedIn, currentUser);
 
     return (
         <div className="container">

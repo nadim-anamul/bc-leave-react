@@ -9,7 +9,8 @@ const PrivateRoute = () => {
         <>
             {isLoggedIn ? (
                 <>
-                {/* <Route path={'/'} element={<Home />} /> */}
+                <Route path={'/dashboard'} element={<Home />} />
+
                     {/* {currentUser?.userRole === 'admin' && (
                         <Route path={''} element={} />
                     )}
@@ -24,7 +25,7 @@ const PrivateRoute = () => {
                         <Route path={''} element={} />
                     )} */}
                 </>
-            ) : (<Navigate to={'/login'} />)}
+            ) : (<Navigate to={'/'} />)}
         </>
     );
 };

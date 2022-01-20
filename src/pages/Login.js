@@ -1,11 +1,6 @@
-import { useAuth } from '../context/AuthContext';
 import style from './Login.module.css';
 
 const Login = () => {
-
-    const {values} =useAuth();
-    console.log('bfsjdhfjsh',values);
-    
     const msg = sessionStorage.getItem('failed');
     sessionStorage.removeItem('failed');
 

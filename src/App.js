@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Success from './RedirectPage/success';
 import Failure from './RedirectPage/failure';
 import AuthProvider from './context/AuthContext';
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
     const applicationData = [
@@ -74,12 +75,14 @@ function App() {
     ];
     return (
         <AuthProvider>
-            <Nav></Nav>
+            <Nav/>
 
             <Routes>
             <Route path="/" element={<Login />} />
+
+            
                 <Route
-                    path="/home"
+                    path="/dashboard"
                     element={<Home applicationData={applicationData} />}
                 />
 
@@ -87,7 +90,7 @@ function App() {
                    <Route path="/success/:token" element={<Success />} />
                     <Route path="/failure" element={<Failure />} />
 
-                <Route path="/addUser" element={<AddUser />} />
+                {/* <Route path="/addUser" element={<AddUser />} />
                 <Route
                     path="/employee-management"
                     element={<EmployeeManagement />}
@@ -104,7 +107,7 @@ function App() {
                     <Route path=":slug" element={<LeaveReview />} />
                 </Route>
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/leave-application" element={<LeaveApplication />} />
+                <Route path="/leave-application" element={<LeaveApplication />} /> */}
                 
             </Routes>
             </AuthProvider>
